@@ -23,15 +23,17 @@ jobs:
     - name: Execute notebook
       run: |
         jupyter nbconvert --to notebook --execute Dict/getradar.ipynb --output executed_notebook.ipynb
-        mv executed_notebook.ipynb $GITHUB_WORKSPACE/executed_notebook.ipynb
+        cp executed_notebook.ipynb $GITHUB_WORKSPACE/
 
     - name: Configure Git
       run: |
         git config --global user.name "GitHub Actions"
         git config --global user.email "actions@github.com"
+        git status  # 這是用來檢查檔案狀態的指令
 
     - name: Commit changes
       run: |
-        git add $GITHUB_WORKSPACE/executed_notebook.ipynb
+        git add executed_notebook.ipynb
+        git status  # 這是用來再次檢查檔案狀態的指令
         git commit -m "Auto run getradar.ipynb"
         git push
