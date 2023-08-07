@@ -2,7 +2,7 @@ name: Auto Run getradar.ipynb
 
 on:
   schedule:
-    - cron: '*/10 * * * *'  # 每10分鐘執行一次
+    - cron: '*/5 * * * *'  # 每5分鐘執行一次
 
 jobs:
   run_notebook:
