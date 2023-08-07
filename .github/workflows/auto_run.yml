@@ -1,0 +1,32 @@
+name: Auto Run getradar.ipynb
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'  # 每10分鐘執行一次
+
+jobs:
+  run_notebook:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'  # 設定你要使用的 Python 版本
+
+    - name: Install Jupyter
+      run: pip install jupyter
+
+    - name: Execute notebook
+      run: |
+        jupyter nbconvert --to notebook --execute Dict/getradar.ipynb --output executed_notebook.ipynb
+
+    - name: Commit changes
+      run: |
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "actions@github.com"
+        git add executed_notebook.ipynb
+        git commit -m "Auto run getradar.ipynb"
+        git push
