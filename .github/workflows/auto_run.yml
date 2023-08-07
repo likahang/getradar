@@ -30,3 +30,7 @@ jobs:
         git add executed_notebook.ipynb
         git commit -m "Auto run getradar.ipynb"
         git push
+
+    - name: List files in the directory
+  run: |
+    ls
