@@ -17,7 +17,8 @@ jobs:
         python-version: '3.9'  # 設定你要使用的 Python 版本
 
     - name: Install Jupyter
-      run: pip install jupyter
+      run: |
+        pip install jupyter
 
     - name: Execute notebook
       run: |
@@ -30,7 +31,3 @@ jobs:
         git add executed_notebook.ipynb
         git commit -m "Auto run getradar.ipynb"
         git push
-
-    - name: List files in the directory
-  run: |
-    ls
