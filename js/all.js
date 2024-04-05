@@ -9,7 +9,7 @@
     const hour = String(now.getHours()).padStart(2, '0');
     const minute = String(Math.floor(now.getMinutes() / 10) * 10).padStart(2, '0');
   
-    return `https://www.cwb.gov.tw/Data/radar/CV1_3600_${year}${month}${day}${hour}${minute}.png`;
+    return `https://www.cwa.gov.tw/Data/radar/CV1_3600_${year}${month}${day}${hour}${minute}.png`;
   }
   
   async function generateImageLinks() {
